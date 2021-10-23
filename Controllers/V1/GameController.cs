@@ -4,6 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
+using ApiGameCatalog.InputModel;
+using ApiGameCatalog.ViewModel;
+
 namespace ApiGameCatalog.Controllers.V1
 {
     [Route("api/V1/[controller]")]
@@ -11,25 +14,25 @@ namespace ApiGameCatalog.Controllers.V1
     public class GameController : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<List<object>>> getGame()
+        public async Task<ActionResult<List<GameViewModel>>> getGame()
         {
             return Ok();
         }
 
         [HttpGet("{gameId:guid}")]
-        public async Task<ActionResult<object>> getGame(Guid gameId)
+        public async Task<ActionResult<GameViewModel>> getGame(Guid gameId)
         {
             return Ok();
         }
 
         [HttpPost]
-        public async Task<ActionResult<object>> insertGame(object game)
+        public async Task<ActionResult<GameViewModel>> insertGame(GameInputModel game)
         {
             return Ok();
         }
 
         [HttpPut("{game:guid}")]
-        public async Task<ActionResult> updateGame(Guid gameId, object game)
+        public async Task<ActionResult> updateGame(Guid gameId, GameInputModel game)
         {
             return Ok();
         }
