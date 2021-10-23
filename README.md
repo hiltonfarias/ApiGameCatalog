@@ -49,3 +49,5 @@ Colocando no browser a url: ```https://localhost:5001/weatherforecast``` obtemos
     }
 ]
 ```
+
+Criação do controller com verbos Https get, post, put, patch e delete.
