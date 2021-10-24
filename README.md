@@ -51,3 +51,7 @@ Colocando no browser a url: ```https://localhost:5001/weatherforecast``` obtemos
 ```
 
 Criação do controller com verbos Https get, post, put, patch e delete.
+
+Criação da models.
+
+Criação da Service que contêm uma interface e uma classe que implementa seus métodos, além de finalizar a implementação da controller.
