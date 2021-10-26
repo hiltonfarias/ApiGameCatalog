@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 using ApiGameCatalog.InputModel;
 using ApiGameCatalog.ViewModel;
 using ApiGameCatalog.Service;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+using ApiGameCatalog.Exceptions;
 
 namespace ApiGameCatalog.Controllers.V1
 {
@@ -52,7 +53,7 @@ namespace ApiGameCatalog.Controllers.V1
                 var game = await _gameService.Insert(gameInputModel);
                 return Ok(game);
             }
-            catch (Exception exception )
+            catch (GameAlreadyRegisteredException exception )
             {
                 return UnprocessableEntity("There is already a game with this name for this producer.");
             }
@@ -66,7 +67,7 @@ namespace ApiGameCatalog.Controllers.V1
                 await _gameService.Update(gameId,gameInputModel);
                 return Ok();
             }
-            catch (Exception exception)
+            catch (GameNotRegiteredException exception)
             {    
                 return NotFound("Game not exist.");
             }
@@ -77,10 +78,10 @@ namespace ApiGameCatalog.Controllers.V1
         {
             try
             {
-                await _gameService.UpdateItem(gameId, price); 
+                await _gameService.Update(gameId, price); 
                 return Ok();
             }
-            catch (Exception exception)
+            catch (GameNotRegiteredException exception)
             {
                 return NotFound("Game not exist.");
             }
@@ -94,7 +95,7 @@ namespace ApiGameCatalog.Controllers.V1
                 await _gameService.Remove(gameId); 
                 return Ok();
             }
-            catch (Exception exception)
+            catch (GameNotRegiteredException exception)
             {
                 return NotFound("Game not exist");
             }
