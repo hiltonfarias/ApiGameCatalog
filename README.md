@@ -57,3 +57,8 @@ Criação da models.
 Criação da Service que contêm uma interface e uma classe que implementa seus métodos, além de finalizar a implementação da controller.
 
 Implementação da entidade, repositório e classe service.
+
+Conexão com banco de dados Sql server.
+```
+dotnet add ApiGameCatalog.csproj package System.Data.SqlClient
+```
